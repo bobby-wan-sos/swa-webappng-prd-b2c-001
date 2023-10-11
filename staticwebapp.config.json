@@ -11,9 +11,6 @@
           "redirect": "/.auth/login/aadb2c?post_login_redirect_uri=.referrer"
       }
   },
-  "globalHeaders": {
-    "X-Frame-Options": "SAMEORIGIN"
-  },
   "auth": {
     "identityProviders": {
       "customOpenIdConnectProviders": {
