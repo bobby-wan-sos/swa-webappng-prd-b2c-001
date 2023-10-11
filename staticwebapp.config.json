@@ -1,0 +1,39 @@
+{
+  "routes": [
+      {
+          "route": "/*",
+          "allowedRoles": ["authenticated"]
+      }
+  ],
+  "responseOverrides": {
+      "401": {
+          "statusCode": 302,
+          "redirect": "/.auth/login/aadb2c?post_login_redirect_uri=.referrer"
+      }
+  },
+  "globalHeaders": {
+    "X-Frame-Options": "SAMEORIGIN"
+  },
+  "auth": {
+    "identityProviders": {
+      "customOpenIdConnectProviders": {
+        "aadb2c": {
+          "registration": {
+            "clientIdSettingName": "AADB2C_PROVIDER_CLIENT_ID",
+            "clientCredential": {
+              "clientSecretSettingName": "AADB2C_PROVIDER_CLIENT_SECRET"
+            },
+            "openIdConnectConfiguration": {
+              "wellKnownOpenIdConfiguration": "https://yflifeb2cprdagent.b2clogin.com/yflifeb2cprdagent.onmicrosoft.com/B2C_1A_SIGNIN_USERNAMEOREMAIL/v2.0/.well-known/openid-configuration"
+            }
+          },
+          "login": {
+            "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+            "scopes": [],
+            "loginParameterNames": []
+          }
+        }
+      }
+    }
+  }
+}
